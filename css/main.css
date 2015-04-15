@@ -72,7 +72,8 @@ body {
 /* Not required for template or sticky footer method. */
 
 body > .container {
-  padding: 60px 15px 0;
+  font-size:12px;
+  padding: 0 15px 60px;
 }
 .container .text-muted {
   margin: 20px 0;
@@ -91,14 +92,17 @@ code {
    Author's custom styles
    ========================================================================== */
 
+#printCopy{
+  font-size:10px;
+  display: none;
+}
 
-
-
-
-
-
-
-
+@media only screen{
+  #terms{
+    max-height: 500px;
+    overflow: auto;
+  }
+}
 
 
 @media (max-width: 767px){
@@ -132,6 +136,14 @@ code {
 	}
 }
 
+@media only print{
+  header{display: none;}
+  footer{displ: none;}
+  .container{display: none;}
+  #printCopy{
+    display: block;
+  }
+}
 
 
 
