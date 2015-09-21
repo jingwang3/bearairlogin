@@ -18,8 +18,65 @@
         <!--[if lt IE 9]>
             <script src="js/vendor/html5-3.6-respond-1.4.2.min.js"></script>
         <![endif]-->
+        <script>
+
+        function submitAction(){
+              var link = document.location.href;
+              var searchString = "redirect=";
+              var equalIndex = link.indexOf(searchString);
+              var redirectUrl = "";
+
+              if (document.forms[0].action == "") {
+              var url = window.location.href;
+              var args = new Object();
+              var query = location.search.substring(1);
+              var pairs = query.split("&");
+                  for(var i=0;i<pairs.length;i++){
+                      var pos = pairs[i].indexOf('=');
+                      if(pos == -1) continue;
+                      var argname = pairs[i].substring(0,pos);
+                      var value = pairs[i].substring(pos+1);
+                      args[argname] = unescape(value);
+                  }
+                  document.forms[0].action = args.switch_url;       
+              }       
+              if(equalIndex >= 0) {
+                    equalIndex += searchString.length;
+                    redirectUrl = "";
+                    redirectUrl += link.substring(equalIndex);
+              }
+              if(redirectUrl.length > 255)
+              redirectUrl = redirectUrl.substring(0,255);
+              document.forms[0].redirect_url.value = redirectUrl;
+              document.forms[0].buttonClicked.value = 4;
+              document.forms[0].submit();
+        }
+
+        function reject()
+        {
+          alert("You will not be able to access the system!");
+        }
+
+
+        function loadAction(){
+              var url = window.location.href;
+              var args = new Object();
+              var query = location.search.substring(1);
+              var pairs = query.split("&");
+              for(var i=0;i<pairs.length;i++){
+                  var pos = pairs[i].indexOf('=');
+                  if(pos == -1) continue;
+                  var argname = pairs[i].substring(0,pos);
+                  var value = pairs[i].substring(pos+1);
+                  args[argname] = unescape(value);
+              }
+              document.forms[0].action = args.switch_url;
+
+        }
+
+        </script>
     </head>
-    <body>
+    <body onload="loadAction();">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -90,13 +147,16 @@
             </ol>
             <p>In consideration for the privilege of using Children’s National Internet access, users hereby release and hold harmless Children’s National from any and all claims of any nature arising from their use, or inability to use, the Internet</p>
           </div>
-          <form action="" method="post" class="text-center">
+          <form method="post" class="text-center">
+            <input TYPE="hidden" NAME="buttonClicked" SIZE="16" MAXLENGTH="15" value="0">
+            <input TYPE="hidden" NAME="redirect_url" SIZE="255" MAXLENGTH="255" VALUE="">
+            <input TYPE="hidden" NAME="err_flag" SIZE="16" MAXLENGTH="15" value="0">
             <div class="row">
               <div class="col-md-3 col-md-offset-3">
-                <input type="submit" name="submit" value="Accept" class="btn btn-success btn-lg btn-block">
+                <input type="button" name="Submit" value="Accept" class="button btn btn-success btn-lg btn-block" onclick="submitAction();">
               </div>
               <div class="col-md-3">
-                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="alert('You will not be able to access the system!')">Reject</button>
+                <input type="button" name="Reject" value="Reject" class="button btn btn-danger btn-lg btn-block" onclick="reject();">
               </div>
             </div>
           </form>
