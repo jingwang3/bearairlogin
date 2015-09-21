@@ -1,11 +1,11 @@
+/*
+@font-face { font-family: CampaignFont; src: url('http://justright.childrensnational.org/MarketingCampaign/styles/fonts/Museo-700.woff'); }
+@font-face { font-family: RegCampaignFont; src: url('http://justright.childrensnational.org/MarketingCampaign/styles/fonts/Museo-500.woff'); }
+@font-face { font-family: LightCampaignFont; src: url('http://justright.childrensnational.org/MarketingCampaign/styles/fonts/Museo-300.woff'); }
 
-@font-face { font-family: CampaignFont; src: url('../fonts/Museo-700.woff'); }
-@font-face { font-family: RegCampaignFont; src: url('../fonts/Museo-500.woff'); }
-@font-face { font-family: LightCampaignFont; src: url('../fonts/Museo-300.woff'); }
-
-@font-face { font-family: CorbelBoldFont; src: url('../fonts/cnat-font2.woff'); }
-@font-face { font-family: CorbelLightFont; src: url('../fonts/cnat-font3.woff'); }
-
+@font-face { font-family: CorbelBoldFont; src: url('http://justright.childrensnational.org/MarketingCampaign/styles/fonts/cnat-font2.woff'); }
+@font-face { font-family: CorbelLightFont; src: url('http://justright.childrensnational.org/MarketingCampaign/styles/fonts/cnat-font3.woff'); }
+*/
 a:hover, a:focus {
   text-decoration: none;
 }
@@ -142,19 +142,10 @@ h1, h2, h3 {
 }
 
 @media (max-width: 990px){
-  .btn-success {
-  width: 45% !important;
-  float:left;
-  margin: 5px;
-}
-
-.btn-danger {
-  width: 45%;
-  float:right;
-  margin: 5px;
-}
-
+  .btn-success, .btn-danger {
+    margin-bottom: 5px;
   }
+}
 
 
 @media (max-width: 767px){
